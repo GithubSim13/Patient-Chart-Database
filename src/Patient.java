@@ -29,4 +29,8 @@ public class Patient {
     public void setComplain() {
         this.occupation = occupation;
     }
+
+    public String getLastName() {
+        return lastName;
+    }
 }

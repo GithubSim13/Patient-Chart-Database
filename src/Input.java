@@ -3,6 +3,12 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Input {
+    private SearchEngine se;
+
+    public Input(SearchEngine se) {
+        this.se = se;
+    }
+
     public void getMenuInput() {
         /*
         To-Do:
@@ -22,8 +28,7 @@ public class Input {
             case "1":
                 System.out.println("Moving to patient search engine...");
                 System.out.println();
-                SearchEngine search = new SearchEngine();
-                search.displaySearchBar();
+                se.displaySearchBar();
                 break;
             case "2":
                 System.out.println("Moving to chart database...");
