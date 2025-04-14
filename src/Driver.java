@@ -1,5 +1,6 @@
 public class Driver {
     public static void main(String[] args) {
+        Patient patient1 = new Patient();
 
         System.out.println("MAIN MENU");
         System.out.println("[1] - Find Patient");
@@ -8,6 +9,5 @@ public class Driver {
 
         Input mainMenuInput = new Input();
         mainMenuInput.getMenuInput();
-
     }
 }
