@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -9,6 +10,10 @@ public class Input {
         - move search engine into separate class that stores
             an arraylist of patients?
          */
+        System.out.println("MAIN MENU");
+        System.out.println("[1] - Find Patient");
+        System.out.println("[2] - View Charts");
+        System.out.println("[3] - Close Application");
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter choice : ");
         String choice = sc.next();
@@ -17,7 +22,8 @@ public class Input {
             case "1":
                 System.out.println("Moving to patient search engine...");
                 System.out.println();
-                patientSearchEngine();
+                SearchEngine search = new SearchEngine();
+                search.displaySearchBar();
                 break;
             case "2":
                 System.out.println("Moving to chart database...");
@@ -28,18 +34,5 @@ public class Input {
             default:
                 System.out.println("Invalid input");
         }
-    }
-
-    public void patientSearchEngine() {
-        /*
-        To-Do:
-        - add input validation loop
-         */
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Follow any of the naming formats below");
-        System.out.println("LASTNAME | ex: SIMBILLO");
-        System.out.println("LASTNAME, FIRSTNAME FIRSTNAME | ex: SIMBILLO, JOSE MIGUEL");
-        System.out.print("Enter patient name : ");
-        String name = sc.next();
     }
 }
