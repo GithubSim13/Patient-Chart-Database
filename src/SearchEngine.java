@@ -16,6 +16,7 @@ public class SearchEngine {
         /*
         To-Do:
         - add input validation loop
+        - add input segregation for different input formats
          */
         Scanner sc = new Scanner(System.in);
         System.out.println("Follow any of the naming formats below");

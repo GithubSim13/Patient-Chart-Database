@@ -13,8 +13,6 @@ public class Input {
         /*
         To-Do:
         - add input validation loop
-        - move search engine into separate class that stores
-            an arraylist of patients?
          */
         System.out.println("MAIN MENU");
         System.out.println("[1] - Find Patient");
