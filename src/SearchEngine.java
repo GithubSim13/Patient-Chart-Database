@@ -75,6 +75,7 @@ public class SearchEngine {
 
             ResultSet rs = stmt.executeQuery();
 
+            ArrayList<Patient> matches = new ArrayList<>();
             boolean found = false;
             int i = 1;
 
@@ -82,7 +83,20 @@ public class SearchEngine {
                 if (!found) {
                     System.out.println("Patients found:");
                 }
-                System.out.println("[" + i + "] - " + rs.getString("last_name") + ", " + rs.getString("first_name") + " " + rs.getString("middle_name"));
+                String lName = rs.getString("last_name");
+                String fName = rs.getString("first_name");
+                String mName = rs.getString("middle_name");
+                String address = rs.getString("address");
+                String phone = rs.getString("telephone");
+                int age = rs.getInt("age");
+                String occupation = rs.getString("occupation");
+                String status = rs.getString("status");
+                String complaint = rs.getString("complain");
+
+                Patient p = new Patient(lName, fName, mName, address, phone, age, occupation, status, complaint);
+                matches.add(p);
+
+                System.out.println("[" + i + "] - " + lName + ", " + fName + " " + mName);
                 found = true;
                 i++;
             }
@@ -90,6 +104,27 @@ public class SearchEngine {
                 System.out.println("Patient not found.");
             }
 
+            Scanner sc = new Scanner(System.in);
+            /*
+            Fix this part so that it uses int choice = sc.nextInt instead
+             */
+            int choice = -1;
+
+            while (choice < 1 || choice > matches.size()) {
+                System.out.print("Select a patient : ");
+                if (sc.hasNextInt()) {
+                    choice = sc.nextInt();
+                }
+                else {
+                    sc.next();
+                    System.out.println("Invalid input. Try again.");
+                }
+            }
+
+            Patient selected = matches.get(choice - 1);
+            System.out.println("Selected patient:");
+            System.out.println(selected.getLastName() + ", " + selected.getFirstName() + " " + selected.getMiddleName());
+            // TODO: Do something with the selected patient, like show full chart or modify data
         }
         catch (SQLException e) {
             e.printStackTrace();
