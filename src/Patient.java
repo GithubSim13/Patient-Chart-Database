@@ -53,4 +53,32 @@ public class Patient {
     public String getMiddleName() {
         return middleName;
     }
+
+    public void displayPatientChart() {
+        System.out.print("[|][|][|][|][|][|][|][|][|][|][|][|][|][|][|][|]");
+        System.out.print("     ");
+        System.out.println("Name : " + lastName + ", " + firstName + " " + middleName);
+
+        System.out.print("[|][|][|][|][|][|][|][|][|][|][|][|][|][|][|][|]");
+        System.out.print("     ");
+        System.out.println("Address : " + address);
+
+        System.out.print("[|][|][|][|][|][|][|][|][|][|][|][|][|][|][|][|]");
+        System.out.print("     ");
+        System.out.print("Telephone : " + telephone);
+        System.out.print("   ");
+        System.out.println("Age : " + age);
+
+        System.out.print("[|][|][|][|][|][|][|][|][|][|][|][|][|][|][|][|]");
+        System.out.print("     ");
+        System.out.println("Occupation : " + occupation);
+
+        System.out.print("                                                ");
+        System.out.print("     ");
+        System.out.println("Status : " + status);
+
+        System.out.print("                                                ");
+        System.out.print("     ");
+        System.out.println("Complain : " + complain);
+    }
 }

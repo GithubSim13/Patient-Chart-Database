@@ -125,6 +125,9 @@ public class SearchEngine {
             System.out.println("Selected patient:");
             System.out.println(selected.getLastName() + ", " + selected.getFirstName() + " " + selected.getMiddleName());
             // TODO: Do something with the selected patient, like show full chart or modify data
+            System.out.println("Retrieving patient chart...");
+            System.out.println();
+            selected.displayPatientChart();
         }
         catch (SQLException e) {
             e.printStackTrace();
