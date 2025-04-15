@@ -46,13 +46,15 @@ public class SearchEngine {
             ResultSet rs = stmt.executeQuery();
 
             boolean found = false;
+            int i = 1;
 
             while (rs.next()) {
                 if (!found) {
                     System.out.println("Patients found:");
                 }
-                System.out.println(rs.getString("last_name") + ", " + rs.getString("first_name") + " " + rs.getString("middle_name"));
+                System.out.println("[" + i + "] - " + rs.getString("last_name") + ", " + rs.getString("first_name") + " " + rs.getString("middle_name"));
                 found = true;
+                i++;
             }
             if (!found) {
                 System.out.println("Patient not found.");
@@ -74,13 +76,15 @@ public class SearchEngine {
             ResultSet rs = stmt.executeQuery();
 
             boolean found = false;
+            int i = 1;
 
             while (rs.next()) {
                 if (!found) {
                     System.out.println("Patients found:");
                 }
-                System.out.println(rs.getString("last_name") + ", " + rs.getString("first_name") + " " + rs.getString("middle_name"));
+                System.out.println("[" + i + "] - " + rs.getString("last_name") + ", " + rs.getString("first_name") + " " + rs.getString("middle_name"));
                 found = true;
+                i++;
             }
             if (!found) {
                 System.out.println("Patient not found.");
