@@ -22,28 +22,19 @@ public class SearchEngine {
         Scanner sc = new Scanner(System.in);
         System.out.println("Follow any of the naming formats below");
         System.out.println("LASTNAME | ex: SIMBILLO");
-        System.out.println("LASTNAME, FIRSTNAME FIRSTNAME | ex: SIMBILLO, JOSE MIGUEL");
+        System.out.println("LASTNAME FIRSTNAME FIRSTNAME | ex: SIMBILLO JOSE MIGUEL");
         System.out.print("Enter patient name : ");
-        String name = sc.next();
+        String name = sc.nextLine();
 
-        searchPatientByLastName(name);
-
-//        boolean found = false;
-//
-//        while (!found) {
-//            for (int i = 0; i < patientList.size(); i++) {
-//                Patient patient = patientList.get(i);
-//                if (name.equals(patient.getLastName())) {
-//                    System.out.println("Patient found!");
-//                    found = true;
-//                    break;
-//                }
-//            }
-//            if (!found) {
-//                System.out.println("Patient not in database.");
-//                found = true;
-//            }
-//        }
+        if (name.contains(" ")) {
+            String[] nameParts = name.split("\\s+");
+            String lastName = nameParts[0];
+            String firstName = String.join(" ", java.util.Arrays.copyOfRange(nameParts, 1, nameParts.length)).trim();
+            searchPatientByFirstName(lastName, firstName);
+        }
+        else {
+            searchPatientByLastName(name);
+        }
     }
 
     public void searchPatientByLastName(String lastName) {
@@ -56,13 +47,37 @@ public class SearchEngine {
 
             if (rs.next()) {
                 System.out.println("Patient found:");
-                System.out.println(rs.getString("last_name") + ", " + rs.getString("first_name") + " " + rs.getString("middle_name"));
-                // You can print other details as well
-            } else {
+                System.out.println(rs.getString("last_name") + ", " + rs.getString("first_name"));
+            }
+            else {
                 System.out.println("Patient not found.");
             }
 
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void searchPatientByFirstName(String lastName, String firstName) {
+        try (Connection conn = DatabaseConnector.connect()) {
+            String sql = "SELECT * FROM patients WHERE last_name = ? AND first_name = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, lastName);  // Set last name parameter
+            stmt.setString(2, firstName); // Set first name parameter
+
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                System.out.println("Patient found:");
+                System.out.println(rs.getString("last_name") + ", " + rs.getString("first_name") + " " + rs.getString("middle_name"));
+            }
+            else {
+                System.out.println("Patient not found.");
+            }
+
+        }
+        catch (SQLException e) {
             e.printStackTrace();
         }
     }
