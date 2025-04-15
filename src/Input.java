@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Input {
@@ -17,7 +15,8 @@ public class Input {
         System.out.println("MAIN MENU");
         System.out.println("[1] - Find Patient");
         System.out.println("[2] - View Charts");
-        System.out.println("[3] - Close Application");
+        System.out.println("[3] - New Patient");
+        System.out.println("[4] - Close Application");
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter choice : ");
         String choice = sc.next();
@@ -32,6 +31,9 @@ public class Input {
                 System.out.println("Moving to chart database...");
                 break;
             case "3":
+                System.out.println("Moving to patient info form...");
+                break;
+            case "4":
                 System.out.println("Closing application...");
                 break;
             default:

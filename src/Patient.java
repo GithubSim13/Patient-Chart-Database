@@ -55,6 +55,12 @@ public class Patient {
     }
 
     public void displayPatientChart() {
+        /*
+        Most of this will be removed eventually once I start working
+            on the gui and stuff.
+        Will need to add another table in the DB called visits for all
+            the visits each patient has had
+         */
         System.out.print("[|][|][|][|][|][|][|][|][|][|][|][|][|][|][|][|]");
         System.out.print("     ");
         System.out.println("Name : " + lastName + ", " + firstName + " " + middleName);
