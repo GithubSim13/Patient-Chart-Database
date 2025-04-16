@@ -86,5 +86,67 @@ public class Patient {
         System.out.print("                                                ");
         System.out.print("     ");
         System.out.println("Complain : " + complain);
+        System.out.println(" ");
+
+//        System.out.print("|");
+//        System.out.print("   Date   ");
+//        System.out.print("|");
+//        System.out.print(" No. ");
+//        System.out.print("|");
+//        System.out.print("       Description       ");
+//        System.out.print("  Time  ");
+//        System.out.print("|");
+//        System.out.print("  Debit  ");
+//        System.out.print("|");
+//        System.out.print(" CreditDate ");
+//        System.out.print("|");
+//        System.out.print(" CreditAmt ");
+//        System.out.print("|");
+//        System.out.print("  Balance  ");
+//        System.out.println("|");
+//
+//        System.out.print("|");
+//        System.out.print("          ");
+//        System.out.print("|");
+//        System.out.print("     ");
+//        System.out.print("|");
+//        System.out.print("                         ");
+//        System.out.print("        ");
+//        System.out.print("|");
+//        System.out.print("         ");
+//        System.out.print("|");
+//        System.out.print("            ");
+//        System.out.print("|");
+//        System.out.print("           ");
+//        System.out.print("|");
+//        System.out.print("           ");
+//        System.out.print("|");
+
+        String[] headers = {
+                "Date", "No.", "Description", "Time", "Debit", "CreditDate", "CreditAmt", "Balance"
+        };
+        int[] widths = {10, 5, 25, 8, 9, 12, 11, 10};
+
+// Print header row
+        System.out.print("|");
+        for (int i = 0; i < headers.length; i++) {
+            System.out.print(Utilities.center(headers[i], widths[i]));
+            System.out.print("|");
+        }
+        System.out.println();
+
+        String[][] visitRows = {
+                {"2025-04-14", "1", "Tooth Extraction", "14:00", "1500", "2025-04-16", "1500", "0"},
+                {"2025-04-15", "2", "Filling", "10:30", "800", "2025-04-18", "800", "0"}
+        };
+
+        for (String[] row : visitRows) {
+            System.out.print("|");
+            for (int i = 0; i < row.length; i++) {
+                System.out.print(Utilities.center(row[i], widths[i]));
+                System.out.print("|");
+            }
+            System.out.println();
+        }
     }
 }
